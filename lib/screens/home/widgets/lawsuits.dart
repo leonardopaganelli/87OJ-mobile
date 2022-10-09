@@ -1,70 +1,66 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:lawsuit_app/models/task.dart';
+import 'package:lawsuit_app/constsnts/colors.dart';
+import 'package:lawsuit_app/models/lawsuit.dart';
 import 'package:lawsuit_app/screens/detail/detail.dart';
 
-class Tasks extends StatelessWidget {
-  final taskList = Task.generateTasks();
+class Lawsuits extends StatelessWidget {
+  final lawSuitList = Lawsuit.generateLawSuits();
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
-            itemCount: taskList.length,
-            itemBuilder: (context, index) => taskList[index].title != null
-                ? buildTask(context, taskList[index])
-                : buildAddTask()));
+            itemCount: lawSuitList.length,
+            itemBuilder: (context, index) => lawSuitList[index].id != null
+                ? buildLawsuit(context, lawSuitList[index])
+                : buildAddLawsuit()));
   }
 
-  Widget buildAddTask() {
+  Widget buildAddLawsuit() {
     return DottedBorder(
         borderType: BorderType.RRect,
-        radius: Radius.circular(20),
-        dashPattern: [10, 10],
+        radius: const Radius.circular(20),
+        dashPattern: const [10, 10],
         color: Colors.grey,
         strokeWidth: 2,
-        child: Center(
+        child: const Center(
           child: Text(
-            '+ Add',
+            '+ Adicionar',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ));
   }
 
-  Widget buildTask(BuildContext context, Task task) {
+  Widget buildLawsuit(BuildContext context, Lawsuit lawsuit) {
     return GestureDetector(
       onTap: () {
-        // Navigator.of(context)
-        //     .push(MaterialPageRoute(builder: (context) => DetailScreen(task)));
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => DetailScreen(lawsuit)));
       },
       child: Container(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
-            color: task.bgColor, borderRadius: BorderRadius.circular(20)),
+            color: redLight, borderRadius: BorderRadius.circular(20)),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Icon(task.iconData, color: task.iconColor, size: 35),
-          SizedBox(
+          const Icon(Icons.person_rounded, color: redDark, size: 35),
+          const SizedBox(
             height: 30,
           ),
           Text(
-            task.title!,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            lawsuit.id!,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          SizedBox(
-            height: 20,
+          const SizedBox(
+            height: 4,
           ),
           Row(
             children: [
               buildTaskStatus(
-                  task.btnColor!, task.iconColor!, '${task.left} left'),
-              SizedBox(
-                width: 5,
-              ),
-              buildTaskStatus(
-                  Colors.white, task.iconColor!, '${task.done} done')
+                  red, redDark, '${lawsuit.involved!.defendant!.accused}'),
             ],
           )
         ]),

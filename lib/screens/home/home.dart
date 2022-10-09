@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lawsuit_app/screens/home/widgets/lawsuits.dart';
 import 'package:lawsuit_app/screens/home/widgets/premiumAccess.dart';
 import 'package:lawsuit_app/screens/home/widgets/tasks.dart';
 
@@ -13,15 +14,15 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          PremiumAccess(),
+          const PremiumAccess(),
           Container(
-            padding: EdgeInsets.all(15),
-            child: Text(
-              "Tasks",
+            padding: const EdgeInsets.all(15),
+            child: const Text(
+              "Processos",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
           ),
-          Expanded(child: Tasks())
+          Expanded(child: Lawsuits())
         ],
       ),
       bottomNavigationBar: buildBottomNavigationBar(),
@@ -31,7 +32,7 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.black,
         onPressed: () {},
-        child: Icon(
+        child: const Icon(
           Icons.add,
           size: 35,
         ),
@@ -42,7 +43,7 @@ class HomeScreen extends StatelessWidget {
   Widget buildBottomNavigationBar() {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(30), topRight: Radius.circular(30)),
           boxShadow: [
             BoxShadow(
@@ -51,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                 blurRadius: 10)
           ]),
       child: ClipRRect(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(30), topRight: Radius.circular(30)),
           child: BottomNavigationBar(
             backgroundColor: Colors.white,
@@ -59,10 +60,11 @@ class HomeScreen extends StatelessWidget {
             showUnselectedLabels: false,
             selectedItemColor: Colors.blueAccent,
             unselectedItemColor: Colors.grey.withOpacity(0.5),
+            // ignore: prefer_const_literals_to_create_immutables
             items: [
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                   label: 'Home', icon: Icon(Icons.home_rounded, size: 30)),
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                   label: 'Person', icon: Icon(Icons.person_rounded, size: 30)),
             ],
           )),
@@ -74,28 +76,22 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       elevation: 0,
       title: Row(children: [
-        Container(
+        SizedBox(
           height: 45,
           width: 45,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: Image.asset("images/avatar.jpg"),
+            child: Image.network(
+                "https://this-person-does-not-exist.com/img/avatar-b5984929c0710db8b11192fc8e90ad63.jpg"),
           ),
         ),
         const SizedBox(width: 10),
         const Text(
-          "Hi Amanda!",
+          "Olá  Douglas!",
           style: TextStyle(
               color: Colors.black, fontSize: 26, fontWeight: FontWeight.bold),
         )
       ]),
-      actions: const [
-        Icon(
-          Icons.more_vert,
-          color: Colors.black,
-          size: 40,
-        )
-      ],
     );
   }
 }
