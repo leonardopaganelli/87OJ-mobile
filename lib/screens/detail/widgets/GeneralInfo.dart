@@ -18,53 +18,107 @@ class GeneralInfo extends StatelessWidget {
     initializeDateFormatting("pt_BR", null);
 
     return Container(
-      child: Column(children: [
+      padding: EdgeInsets.all(15),
+      child: ListView(children: [
         Text(
             "O processo teve origem no ${lawsuit.court!.name}, em ${DateFormat.yMMMd().format(DateTime.parse(lawsuit.initDate!))}."),
         SizedBox(
-          height: 10,
+          height: 20,
         ),
-        Column(
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(Icons.account_balance_rounded),
-            Row(
+            SizedBox(
+              width: 10,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Tribunal de Origem"),
+                Text(
+                  "Tribunal de Origem",
+                  style: TextStyle(fontSize: 18),
+                ),
+                SizedBox(
+                  height: 6,
+                ),
                 Text(
                     "${lawsuit.court!.alias} · Comarca · ${lawsuit.court!.city}, ${lawsuit.court!.state}")
               ],
             )
           ],
         ),
-        Column(
+        SizedBox(
+          height: 20,
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(Icons.balance_rounded),
-            Row(
+            SizedBox(
+              width: 10,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Assunto"),
+                Text(
+                  "Assunto",
+                  style: TextStyle(fontSize: 18),
+                ),
+                SizedBox(
+                  height: 6,
+                ),
                 Text("${lawsuit.subjects!.join(" / ")}")
               ],
             )
           ],
         ),
-        Column(
+        SizedBox(
+          height: 20,
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(Icons.event_rounded),
-            Row(
+            SizedBox(
+              width: 10,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Início do Processo"),
+                Text(
+                  "Início do Processo",
+                  style: TextStyle(fontSize: 18),
+                ),
+                SizedBox(
+                  height: 6,
+                ),
                 Text(
                     "${DateFormat.y().format(DateTime.parse(lawsuit.initDate!))}")
               ],
             )
           ],
         ),
-        Column(
+        SizedBox(
+          height: 20,
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(Icons.monetization_on_outlined),
-            Row(
+            SizedBox(
+              width: 10,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Valor da Causa"),
+                Text(
+                  "Valor da Causa",
+                  style: TextStyle(fontSize: 18),
+                ),
+                SizedBox(
+                  height: 6,
+                ),
                 Text(NumberFormat.currency(
                   locale: 'pt_BR',
                   symbol: 'R\$',
@@ -73,7 +127,10 @@ class GeneralInfo extends StatelessWidget {
             )
           ],
         ),
-        Column(
+        SizedBox(
+          height: 20,
+        ),
+        Row(
           children: [
             Icon(Icons.info_outline_rounded),
             Row(
@@ -81,12 +138,26 @@ class GeneralInfo extends StatelessWidget {
             )
           ],
         ),
-        Column(
+        SizedBox(
+          height: 20,
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(Icons.domain_rounded),
-            Row(
+            SizedBox(
+              width: 10,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Poder Judiciário"),
+                Text(
+                  "Poder Judiciário",
+                  style: TextStyle(fontSize: 18),
+                ),
+                SizedBox(
+                  height: 6,
+                ),
                 Text("${lawsuit.judicialBranch}")
               ],
             )
