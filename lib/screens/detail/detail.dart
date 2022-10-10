@@ -38,17 +38,15 @@ class DetailScreen extends StatelessWidget {
                 child: Scaffold(
                   appBar: AppBar(
                     automaticallyImplyLeading: false,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    actions: [
-                      const TabBar(
-                        isScrollable: true,
-                        tabs: [
-                          Tab(text: "Linha do tempo"),
-                          Tab(text: "Informações gerais"),
-                          Tab(text: "Envolvidos"),
-                        ],
-                      ),
-                    ],
+                    toolbarHeight: 0,
+                    bottom: const TabBar(
+                      isScrollable: true,
+                      tabs: [
+                        Tab(text: "Linha do tempo"),
+                        Tab(text: "Informações gerais"),
+                        Tab(text: "Envolvidos"),
+                      ],
+                    ),
                   ),
                   body: TabBarView(
                     children: [
@@ -66,21 +64,6 @@ class DetailScreen extends StatelessWidget {
                 ),
               ),
             ))
-            // lawsuit.timeLine == null
-            //     ? SliverFillRemaining(
-            //         child: Container(
-            //             color: Colors.white,
-            //             child: const Center(
-            //                 child: Text(
-            //               "Sem histórico",
-            //               style: TextStyle(color: Colors.grey, fontSize: 18),
-            //             ))),
-            //       )
-            //     : SliverList(
-            //         delegate: SliverChildBuilderDelegate(
-            //             (_, index) => TaskTimeline(detailList[index]),
-            //             childCount: detailList.length),
-            //       )
           ],
         ));
   }

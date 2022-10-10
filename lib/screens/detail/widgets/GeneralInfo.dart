@@ -131,10 +131,21 @@ class GeneralInfo extends StatelessWidget {
           height: 20,
         ),
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(Icons.info_outline_rounded),
-            Row(
-              children: [Text("Natureza"), Text(lawsuit.nature!.toUpperCase())],
+            SizedBox(
+              width: 10,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Natureza", style: TextStyle(fontSize: 18)),
+                SizedBox(
+                  height: 6,
+                ),
+                Text(lawsuit.nature!.toUpperCase())
+              ],
             )
           ],
         ),
