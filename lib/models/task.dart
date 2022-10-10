@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lawsuit_app/constsnts/colors.dart';
+import 'package:lawsuit_app/constants/colors.dart';
 
 class Task {
   IconData? iconData;

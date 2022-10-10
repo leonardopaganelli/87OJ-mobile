@@ -54,7 +54,7 @@ class Lawsuit {
         nature: 'Procedimento do juizado especial cível',
         judicialBranch:
             'Justiça dos Estados e do Distrito Federal e Territórios',
-        initDate: '29/10/2021',
+        initDate: '2021-10-29',
         amountInControversy: 3000,
         involved: Involved(
           plaintiff: Plaintiff(

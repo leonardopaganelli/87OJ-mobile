@@ -82,7 +82,7 @@ class HomeScreen extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image.network(
-                "https://this-person-does-not-exist.com/img/avatar-b5984929c0710db8b11192fc8e90ad63.jpg"),
+                "https://media-exp1.licdn.com/dms/image/C4E03AQEheE7ZCkFK2w/profile-displayphoto-shrink_800_800/0/1569537254844?e=1669248000&v=beta&t=utyHGKNkPH3Aj0cf0JcyZ5z7uGaDw41ZqWJMcFMtqIY"),
           ),
         ),
         const SizedBox(width: 10),

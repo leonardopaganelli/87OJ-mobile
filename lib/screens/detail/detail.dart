@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lawsuit_app/models/lawsuit.dart';
 import 'package:lawsuit_app/screens/detail/widgets/DatePicker.dart';
+import 'package:lawsuit_app/screens/detail/widgets/GeneralInfo.dart';
+import 'package:lawsuit_app/screens/detail/widgets/InvolvedInfo.dart';
+import 'package:lawsuit_app/screens/detail/widgets/LawsuitDescription.dart';
+import 'package:lawsuit_app/screens/detail/widgets/LawsuitTimeline.dart';
 import 'package:lawsuit_app/screens/detail/widgets/TaskTitle.dart';
 import 'package:lawsuit_app/screens/detail/widgets/taskTimeline.dart';
 import '../../models/task.dart';
@@ -23,19 +27,52 @@ class DetailScreen extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [DatePicker(), TaskTitle()],
-                ),
+                child: LawsuitDescription(lawsuit),
               ),
             ),
-            // detailList == null
+            SliverFillRemaining(
+                child: Container(
+              color: Colors.white,
+              child: DefaultTabController(
+                length: 3,
+                child: Scaffold(
+                  appBar: AppBar(
+                    automaticallyImplyLeading: false,
+                    // ignore: prefer_const_literals_to_create_immutables
+                    actions: [
+                      const TabBar(
+                        isScrollable: true,
+                        tabs: [
+                          Tab(text: "Linha do tempo"),
+                          Tab(text: "Informações gerais"),
+                          Tab(text: "Envolvidos"),
+                        ],
+                      ),
+                    ],
+                  ),
+                  body: TabBarView(
+                    children: [
+                      ListView(
+                        children: [
+                          ...?lawsuit.timeLine
+                              ?.map((date) => LawsuitTimeline(date))
+                              .toList()
+                        ],
+                      ),
+                      GeneralInfo(lawsuit),
+                      InvolvedInfo(lawsuit.involved!),
+                    ],
+                  ),
+                ),
+              ),
+            ))
+            // lawsuit.timeLine == null
             //     ? SliverFillRemaining(
             //         child: Container(
             //             color: Colors.white,
-            //             child: Center(
+            //             child: const Center(
             //                 child: Text(
-            //               "No task today",
+            //               "Sem histórico",
             //               style: TextStyle(color: Colors.grey, fontSize: 18),
             //             ))),
             //       )
@@ -63,15 +100,17 @@ class DetailScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '${lawsuit.involved!.plaintiff!.perpetrator} x ${lawsuit.involved!.defendant!.accused}',
-              style: TextStyle(fontWeight: FontWeight.bold),
+              '${lawsuit.involved!.defendant!.accused}',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(
               height: 5,
             ),
             Text(
               'Processo nº ${lawsuit.id}',
-              style: TextStyle(fontSize: 12, color: Colors.grey[700]),
+              style: TextStyle(fontSize: 11, color: Colors.grey[700]),
             ),
           ],
         ),

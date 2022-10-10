@@ -1,6 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:lawsuit_app/constsnts/colors.dart';
+import 'package:lawsuit_app/constants/colors.dart';
 import 'package:lawsuit_app/models/lawsuit.dart';
 import 'package:lawsuit_app/screens/detail/detail.dart';
 
