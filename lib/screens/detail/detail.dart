@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lawsuit_app/models/lawsuit.dart';
-import 'package:lawsuit_app/screens/detail/widgets/DatePicker.dart';
 import 'package:lawsuit_app/screens/detail/widgets/GeneralInfo.dart';
 import 'package:lawsuit_app/screens/detail/widgets/InvolvedInfo.dart';
 import 'package:lawsuit_app/screens/detail/widgets/LawsuitDescription.dart';
 import 'package:lawsuit_app/screens/detail/widgets/LawsuitTimeline.dart';
-import 'package:lawsuit_app/screens/detail/widgets/TaskTitle.dart';
-import 'package:lawsuit_app/screens/detail/widgets/taskTimeline.dart';
-import '../../models/task.dart';
 
 class DetailScreen extends StatelessWidget {
   final Lawsuit lawsuit;
-  DetailScreen(this.lawsuit);
+  const DetailScreen(this.lawsuit, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +80,7 @@ class DetailScreen extends StatelessWidget {
           children: [
             Text(
               '${lawsuit.involved!.defendant!.accused}',
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
             ),

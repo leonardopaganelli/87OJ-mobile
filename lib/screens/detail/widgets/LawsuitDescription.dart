@@ -4,26 +4,27 @@ import 'package:intl/intl.dart';
 
 class LawsuitDescription extends StatelessWidget {
   final Lawsuit lawsuit;
-  LawsuitDescription(this.lawsuit);
+  // ignore: prefer_const_constructors_in_immutables
+  LawsuitDescription(this.lawsuit, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             "${lawsuit.involved!.plaintiff!.perpetrator} X ${lawsuit.involved!.defendant!.accused}",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Row(
             children: [
-              Icon(Icons.account_balance_rounded),
-              SizedBox(
+              const Icon(Icons.account_balance_rounded),
+              const SizedBox(
                 width: 8,
               ),
               Text(
@@ -32,8 +33,8 @@ class LawsuitDescription extends StatelessWidget {
           ),
           Row(
             children: [
-              Icon(Icons.balance_rounded),
-              SizedBox(
+              const Icon(Icons.balance_rounded),
+              const SizedBox(
                 width: 8,
               ),
               Text("${lawsuit.nature}".toUpperCase())
@@ -41,8 +42,8 @@ class LawsuitDescription extends StatelessWidget {
           ),
           Row(
             children: [
-              Icon(Icons.monetization_on_outlined),
-              SizedBox(
+              const Icon(Icons.monetization_on_outlined),
+              const SizedBox(
                 width: 8,
               ),
               Text("Valor da causa: ${NumberFormat.currency(

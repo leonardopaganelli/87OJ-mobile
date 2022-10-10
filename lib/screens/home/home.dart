@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lawsuit_app/screens/home/widgets/lawsuits.dart';
 import 'package:lawsuit_app/screens/home/widgets/premiumAccess.dart';
-import 'package:lawsuit_app/screens/home/widgets/tasks.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

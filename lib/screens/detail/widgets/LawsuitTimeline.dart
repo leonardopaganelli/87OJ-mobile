@@ -7,16 +7,16 @@ import '../../../models/date.dart';
 
 class LawsuitTimeline extends StatelessWidget {
   final Date detail;
-  LawsuitTimeline(this.detail);
+  const LawsuitTimeline(this.detail, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
         color: Colors.white,
-        padding: EdgeInsets.symmetric(horizontal: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -44,27 +44,27 @@ class LawsuitTimeline extends StatelessWidget {
   Widget buildCard(Document document) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: blueLight,
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(10),
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10))),
-      padding: EdgeInsets.all(15),
-      margin: EdgeInsets.all(4.2),
+      padding: const EdgeInsets.all(15),
+      margin: const EdgeInsets.all(4.2),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             document.label!,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Text(
             document.description!,
-            style: TextStyle(color: Colors.grey),
+            style: const TextStyle(color: Colors.grey),
           )
         ],
       ),
@@ -72,7 +72,7 @@ class LawsuitTimeline extends StatelessWidget {
   }
 
   Widget buildTimeline(Color color) {
-    return Container(
+    return SizedBox(
       width: 20,
       child: TimelineTile(
         alignment: TimelineAlign.manual,

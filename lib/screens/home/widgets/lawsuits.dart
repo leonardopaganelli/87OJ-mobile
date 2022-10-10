@@ -7,6 +7,8 @@ import 'package:lawsuit_app/screens/detail/detail.dart';
 class Lawsuits extends StatelessWidget {
   final lawSuitList = Lawsuit.generateLawSuits();
 
+  Lawsuits({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -70,7 +72,7 @@ class Lawsuits extends StatelessWidget {
 
   Widget buildTaskStatus(Color bgColor, Color textColor, String text) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       decoration: BoxDecoration(
           color: bgColor, borderRadius: BorderRadius.circular(20)),
       child: Text(
